@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  app:
+    image: utp-backend
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: andrea1960
+      POSTGRES_DB: dataBaseUTP
+    ports:
+      - 5432:5432
+    volumes:
+      - ./database.sql:/docker-entrypoint-initdb.d/database.sql
